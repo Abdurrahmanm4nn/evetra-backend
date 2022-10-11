@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evetra-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: evetra-backend
+  template:
+    metadata:
+      labels:
+        app: evetra-backend
+    spec:
+      containers:
+      - name: evetra-backend
+        image: abdurrahmanm4nnan/evetra-backend:v1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 8081
+          name: evetra-backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: evetra-backend
+spec:
+  ports:
+  - port: 8081
+  selector:
+    app: evetra-backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: evetra-backend
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8081
+  selector:
+    app: evetra-backend
