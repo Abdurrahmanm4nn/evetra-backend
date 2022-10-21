@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: evetra-backend
-        image: abdurrahmanm4nnan/evetra-backend:latest
+        image: abdurrahmanm4nnan/evetra-backend:dev
         resources:
           requests:
             cpu: 100m
@@ -43,7 +43,6 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
-    targetPort: 8081
+  - port: 8081
   selector:
     app: evetra-backend
