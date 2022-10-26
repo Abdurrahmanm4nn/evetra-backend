@@ -15,6 +15,7 @@ spec:
       containers:
       - name: evetra-backend
         image: abdurrahmanm4nnan/evetra-backend:latest
+        imagePullPolicy: "Always"
         resources:
           requests:
             cpu: 100m
